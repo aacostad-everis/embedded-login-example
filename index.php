@@ -38,7 +38,7 @@
         </div>
         <div class="element-right">
         </div>
-	<iframe id="inlineFrameExample" title="Login iFrame" width="300" height="300" src="https://<?php echo getenv('SALESFORCE_COMMUNITY_URL');?>/customers/services/oauth2/authorize?response_type=token&client_id=<?php echo getenv('SALESFORCE_CLIENT_ID');?>&redirect_uri=https%3A%2F%2F<?php echo getenv('SALESFORCE_HEROKUAPP_URL');?>%2F_callback.php&state=mystate"></iframe>
+	<iframe id="inlineFrameExample" title="Login iFrame" width="300" height="300" src="https://<?php echo getenv('SALESFORCE_COMMUNITY_URL');?>/services/oauth2/authorize?response_type=token&client_id=<?php echo getenv('SALESFORCE_CLIENT_ID');?>&redirect_uri=https%3A%2F%2F<?php echo getenv('SALESFORCE_HEROKUAPP_URL');?>%2F_callback.php&state=mystate"></iframe>
       </div>
     </header>
     <section class="textured-section">
