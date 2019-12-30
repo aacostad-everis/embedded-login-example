@@ -38,8 +38,8 @@
         </div>
         <div class="element-right">
         </div>
-	<div id="iFrameDiv" style="border-radius: 10px; width: 300px; overflow: hidden;"> 
-		<iframe id="inlineFrameExample" title="Login iFrame" width="300" height="400" src="https://<?php echo getenv('SALESFORCE_COMMUNITY_URL');?>/services/oauth2/authorize?response_type=token&client_id=<?php echo getenv('SALESFORCE_CLIENT_ID');?>&redirect_uri=https%3A%2F%2F<?php echo getenv('SALESFORCE_HEROKUAPP_URL');?>%2F_callback.php"></iframe>
+	<div id="iFrameDiv" style="border-radius: 10px; width: 300px; heigth: 400px; overflow: hidden;"> 
+		<iframe id="inlineFrameExample" title="Login iFrame" width="100%" height="100%" src="https://<?php echo getenv('SALESFORCE_COMMUNITY_URL');?>/services/oauth2/authorize?response_type=token&client_id=<?php echo getenv('SALESFORCE_CLIENT_ID');?>&redirect_uri=https%3A%2F%2F<?php echo getenv('SALESFORCE_HEROKUAPP_URL');?>%2F_callback.php"></iframe>
 	</div>
       </div>
     </header>
