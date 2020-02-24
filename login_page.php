@@ -12,8 +12,17 @@
 	
 	<script>
 		function myFunction() {
-			var x = "Welcome: " + <?php echo $_POST["username"]; ?> + location.hash;  
- 		 	document.getElementById("demo").innerHTML = x;
+			var x = "Welcome: ";  
+			document.getElementById("demo").innerHTML = x;
+			define("USERNAME", "user@example.com");
+			define("PASSWORD", "password");
+			define("SECURITY_TOKEN", "sdfhkjwrhgfwrgergp");
+
+			require_once ('soapclient/SforceEnterpriseClient.php');
+
+			$mySforceConnection = new SforceEnterpriseClient();
+			$mySforceConnection->createConnection("enterprise.wsdl.xml");
+			$mySforceConnection->login(USERNAME, PASSWORD.SECURITY_TOKEN);
 		}
 	</script>
 </head> 
