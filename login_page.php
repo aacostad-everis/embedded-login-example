@@ -10,10 +10,8 @@
 </head> 
 <body>
 <button onclick="myFunction()">Get login info</button>
-
-<p id="demo"></p>
 	
-	<script>
+	<?php
 		function myFunction() {
 			var x = "Welcome: ";  
 			document.getElementById("demo").innerHTML = x;
@@ -26,9 +24,9 @@
 			$mySforceConnection = new SforceEnterpriseClient();
 			$mySforceConnection->createConnection("enterprise.wsdl.xml");
 			$mySforceConnection->login(USERNAME, PASSWORD.SECURITY_TOKEN);
-			Welcome1 <?php echo $_POST["username"]; ?><br>
+			echo $_POST["username"];
 		}
-	</script>
+	?>
 
 Welcome2 <?php echo $_POST["username"]; ?><br>
 </body>    
