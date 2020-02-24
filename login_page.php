@@ -9,8 +9,6 @@
 
 </head> 
 <body>
-<button onclick="myFunction()">Get login info</button>
-	
 	<?php
 		function myFunction() {
 			var x = "Welcome: ";  
@@ -26,8 +24,10 @@
 			$mySforceConnection->login(USERNAME, PASSWORD.SECURITY_TOKEN);
 			echo $_POST["username"];
 		}
+		myFunction();
 	?>
 
+<button onclick="myFunction()">Get login info</button>
 Welcome2 <?php echo $_POST["username"]; ?><br>
 </body>    
 </html>
