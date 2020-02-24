@@ -27,7 +27,12 @@
   </head>
   
   <body>
-  	<div id="sign-in-link" style="position: absolute; top: 20px;right: 20px;"></div>
+    <div id="sign-in-link" style="position: absolute; top: 20px;right: 20px;"></div>
+    <form action="/login_page.php" method="post">
+      Username: <input type="text" name="username"><br>
+      E-Password: <input type="text" name="password"><br>
+      <input type="submit" value="Submit">
+    </form> 
     <header>
       <div class="masthead-elements-row-1">
         <div class="element-left"></div>
