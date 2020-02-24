@@ -11,17 +11,6 @@
 <body>
 	<?php
 		function myFunction() {
-			var x = "Welcome: ";  
-			document.getElementById("demo").innerHTML = x;
-			define("USERNAME", "user@example.com");
-			define("PASSWORD", "password");
-			define("SECURITY_TOKEN", "sdfhkjwrhgfwrgergp");
-
-			require_once ('soapclient/SforceEnterpriseClient.php');
-
-			$mySforceConnection = new SforceEnterpriseClient();
-			$mySforceConnection->createConnection("enterprise.wsdl.xml");
-			$mySforceConnection->login(USERNAME, PASSWORD.SECURITY_TOKEN);
 			echo $_POST["username"];
 		}
 		myFunction();
