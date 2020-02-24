@@ -26,10 +26,10 @@
 			$mySforceConnection = new SforceEnterpriseClient();
 			$mySforceConnection->createConnection("enterprise.wsdl.xml");
 			$mySforceConnection->login(USERNAME, PASSWORD.SECURITY_TOKEN);
+			Welcome1 <?php echo $_POST["username"]; ?><br>
 		}
 	</script>
 
-<p id="demo"></p>
 Welcome2 <?php echo $_POST["username"]; ?><br>
 </body>    
 </html>
