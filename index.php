@@ -29,11 +29,6 @@
   
   <body>
     <div id="sign-in-link" style="position: absolute; top: 20px;right: 20px;"></div>
-    <form action="/login_page.php" method="post">
-      Username: <input type="text" name="username"><br>
-      E-Password: <input type="text" name="password"><br>
-      <input type="submit" value="Submit">
-    </form> 
     <header>
       <div class="masthead-elements-row-1">
         <div class="element-left"></div>
@@ -44,6 +39,13 @@
         </div>
         <div class="element-right">
         </div>
+  <div id="iFrameDiv" style="border-radius: 10px; width: 300px; height: 400px; overflow: hidden;">   
+    <form action="/login_page.php" method="post">
+      Username: <input type="text" name="username"><br>
+      E-Password: <input type="text" name="password"><br>
+      <input type="submit" value="Submit">
+    </form> 
+  </div> 
 	<div id="iFrameDiv" style="border-radius: 10px; width: 300px; height: 400px; overflow: hidden;"> 
 		<iframe id="inlineFrameExample" title="Login iFrame" style="overflow:hidden;" width="100%" height="100%" scrolling="no" src="https://<?php echo getenv('SALESFORCE_COMMUNITY_URL');?>/services/oauth2/authorize?response_type=token&client_id=<?php echo getenv('SALESFORCE_CLIENT_ID');?>&redirect_uri=https%3A%2F%2F<?php echo getenv('SALESFORCE_HEROKUAPP_URL');?>%2F_callback.php&scope=openid&nonce=somevalue"></iframe>
 	</div>
