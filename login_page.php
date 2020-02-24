@@ -6,9 +6,12 @@
 	<meta name="salesforce-save-access-token" content="true">
 	<meta name="salesforce-allowed-domains" content="<?php echo getenv('SALESFORCE_HEROKUAPP_URL');?>">
 	<script src="https://<?php echo getenv('SALESFORCE_COMMUNITY_URL');?>/servlet/servlet.loginwidgetcontroller?type=javascript_widget" async defer></script>-->
-	<button onclick="myFunction()">Get login info</button>
-	
-	<p id="demo"></p>
+
+</head> 
+<body>
+<button onclick="myFunction()">Get login info</button>
+
+<p id="demo"></p>
 	
 	<script>
 		function myFunction() {
@@ -25,8 +28,7 @@
 			$mySforceConnection->login(USERNAME, PASSWORD.SECURITY_TOKEN);
 		}
 	</script>
-</head> 
-<body>
+
 <p id="demo"></p>
 Welcome2 <?php echo $_POST["username"]; ?><br>
 </body>    
