@@ -27,6 +27,7 @@
 	</script>
 </head> 
 <body>
+<p id="demo"></p>
 Welcome2 <?php echo $_POST["username"]; ?><br>
 </body>    
 </html>
