@@ -17,5 +17,7 @@
 		}
 	</script>
 </head> 
-<body></body>    
+<body>
+Welcome2 <?php echo $_POST["username"]; ?><br>
+</body>    
 </html>
