@@ -19,7 +19,7 @@
 		
 		echo "after login";
 		
-		echo $mySforceConnection->sessionId;
+		echo $mySforceConnection;
 	}
 
 	ini_set('display_errors', 1);
