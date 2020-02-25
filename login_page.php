@@ -27,12 +27,12 @@
 		$finalConnection = new SforceEnterpriseClient();
 		
 		$Options = array(
-			'location'=> getenv('SALESFORCE_COMMUNITY_URL') . '/Soap/c/48.0/',
-			'LoginScopeHeader' => array(
-				'organizationId' => '00D5J000000nKmp',
-				'portalId' => '0DB5J0000004CLY'
-			)
+			'location'=> getenv('SALESFORCE_COMMUNITY_URL') . '/Soap/c/48.0/'
 		);
+		
+		$finalConnection->LoginScopeHeaderValue = new LoginScopeHeader();
+		$finalConnection->LoginScopeHeaderValue->organizationId = '00D5J000000nKmp';
+		$finalConnection->LoginScopeHeaderValue->portalId = '0DB5J0000004CLY';
 		
 		$finalConnection->createConnection("/app/soapclient/enterprise.wsdl.xml", $Options);
 		$finalConnection->login($username, $password);
