@@ -46,6 +46,6 @@
 		echo "ERROR Message";
 	}
 	
-	myFunction('tania.godoy.rodriguez@everis.com', 'p4ssw0rd');
+	myFunction('tania.godoy.rodriguez@everis.com', 'Tg28122019');
 ?>
 
