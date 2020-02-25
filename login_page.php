@@ -25,6 +25,12 @@
 		$user = $queryResult->records[0];
 		$username = $user->Username;
 		// Get Oauth token for actual username & password
+		$finalConnection = new SforceEnterpriseClient();
+		
+		$Options = array('location'=> getenv('SALESFORCE_COMMUNITY_URL') . '/Soap/c/48.0/');
+		
+		$finalConnection->createConnection("/app/soapclient/enterprise.wsdl.xml", $Options);
+		$finalConnection->login($username, $password);
 		
 		
 	}
