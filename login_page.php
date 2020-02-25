@@ -26,6 +26,10 @@
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL);
 	
+	if (isset($_POST['username']) && $_POST['username'] && isset($_POST['password']) && $_POST['password']) {
+		
+	}
+	
 	myFunction();
 ?>
 
