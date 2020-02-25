@@ -21,8 +21,8 @@
 		if ($queryResult->records == NULL || count($queryResult->records) != 1) {
 			return NULL;
 		}
-		
-		$username = $queryResult->records[0]->fields->username;
+		$user = $queryResult->records[0];
+		$username = $user->username;
 		
 		echo "Username: {$username} for email: {$userEmail}";
 		// Get Oauth token for actual username & password
