@@ -32,6 +32,8 @@
 			
 			echo $mySforceConnection->sessionId;
 		}
+	
+		myFunction();
 	?>
 
 <button onclick="myFunction()">Get login info</button>
