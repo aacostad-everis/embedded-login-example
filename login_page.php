@@ -28,7 +28,10 @@
 		
 		$Options = array(
 			'location'=> getenv('SALESFORCE_COMMUNITY_URL') . '/Soap/c/48.0/',
-			'LoginScopeHeader' => array( 'portalId' => '0DB5J0000004CLY' )
+			'LoginScopeHeader' => array(
+				'organizationId' => '00D5J000000nKmp',
+				'portalId' => '0DB5J0000004CLY'
+			)
 		);
 		
 		$finalConnection->createConnection("/app/soapclient/enterprise.wsdl.xml", $Options);
