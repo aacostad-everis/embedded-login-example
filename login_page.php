@@ -18,7 +18,7 @@
 		echo "query: {$query}";
 		$queryResult = $mySforceConnection->query($query);
 		
-		if ($queryResult->records != NULL || count($queryResult->records) != 1) {
+		if ($queryResult->records == NULL || count($queryResult->records) != 1) {
 			return NULL;
 		}
 		
