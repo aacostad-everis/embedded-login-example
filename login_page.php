@@ -49,7 +49,7 @@
 			return json_encode($loginResult);
 		}
 		catch (Exception $e) {
-			return "{ \"ERROR\": "{$e->getMessage()}" }";
+			return "{ \"ERROR\": \"{$e->getMessage()}\" }";
 		}
 	}
 
