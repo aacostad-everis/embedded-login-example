@@ -41,12 +41,13 @@
         </div>
         <div class="element-right">
         </div>
-  <div id="iFrameDiv" style="border-radius: 10px; width: 300px; height: 400px; overflow: hidden;">   
+  <div id="loginFormDiv" style="border-radius: 10px; width: 300px; height: 400px; overflow: hidden;">   
     <form id="loginform" method="post"> <!--action="/login_page.php"-->
       Username: <input type="text" name="username"><br>
       E-Password: <input type="text" name="password"><br>
       <input type="submit" value="Submit">
     </form>
+  </div> 
 
 	<script type="text/javascript">
 	$(document).ready(function() {
@@ -59,12 +60,13 @@
 		    success: function(response)
 		    {
 			var jsonData = JSON.parse(response);
-
+			    
+			console.log("Data: " + jsonData);
 			// user is logged in successfully in the back-end
 			// let's redirect
 			if (jsonData.success == "1")
 			{
-			    location.href = 'my_profile.php';
+			    alert('Logged In!');
 			}
 			else
 			{
@@ -75,7 +77,6 @@
 	     });
 	});
 	</script>
-  </div> 
 	<div id="iFrameDiv" style="border-radius: 10px; width: 300px; height: 400px; overflow: hidden;"> 
 		<iframe id="inlineFrameExample" title="Login iFrame" style="overflow:hidden;" width="100%" height="100%" scrolling="no" src="https://<?php echo getenv('SALESFORCE_COMMUNITY_URL');?>/services/oauth2/authorize?response_type=token&client_id=<?php echo getenv('SALESFORCE_CLIENT_ID');?>&redirect_uri=https%3A%2F%2F<?php echo getenv('SALESFORCE_HEROKUAPP_URL');?>%2F_callback.php&scope=openid&nonce=somevalue"></iframe>
 	</div>
