@@ -31,7 +31,7 @@
 		$finalConnection->createConnection("/app/soapclient/enterprise.wsdl.xml", $Options);
 		$OrgId='00D5J000000nKmp';
 		$SiteId='0DB5J0000004CLY';
-		$finalConnection->setLoginScopeHeader(new LoginScopeHeader('00D5J000000nKmp', '0DB5J0000004CLY'));		
+		$finalConnection->setLoginScopeHeader(new LoginScopeHeader($OrgId, $SiteId));		
 		$loginResult = $finalConnection->login($username, $password);
 		
 		return $loginResult;
