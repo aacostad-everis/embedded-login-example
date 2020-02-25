@@ -1,6 +1,5 @@
 {
     "require": {
-        "ext-soap": "*",
-        "php": ">=7.2"
+        "ext-soap": "*"
     }
 }
