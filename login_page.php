@@ -16,11 +16,11 @@
 		// Query Salesforce to get Username from email
 		$queryResult = $mySforceConnection->query("SELECT username FROM USER where email = '{$userEmail}'");
 		
-		if ($queryResult->count() != 1) {
+		if ($queryResult->records->count() != 1) {
 			return NULL;
 		}
 		
-		$username = $queryResult[0]->fields->username;
+		$username = $queryResult->records[0]->fields->username;
 		// Get Oauth token for actual username & password
 		
 		
