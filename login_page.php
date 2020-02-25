@@ -53,17 +53,11 @@
 		}
 	}
 
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
-	
 	if (isset($_POST['username']) && $_POST['username'] && isset($_POST['password']) && $_POST['password']) {
 		echo loginUser($_POST['username'], $_POST['password']);
 	}
 	else {
 		echo "{ \"ERROR\": \"Invalid parameters passed!\" }";
 	}
-	
-	echo loginUser('aacostad.everis@gmail.com', 'P4ssw0rd_3v3r1s');
 ?>
 
