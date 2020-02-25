@@ -1,7 +1,8 @@
 <?php
-	function myFunction(string $userEmail = NULL, string $password = NULL) {
+
+	protected function getUsernameForEmail(string $userEmail = NULL) {
 		// Validate function parameters
-		if (is_null($userEmail) || is_null($password) || strlen($userEmail) == 0 || strlen($password) == 0){
+		if (is_null($userEmail) || strlen($userEmail) == 0){
 			return NULL;
 		}
 		// Get connection credentials for integration user
@@ -22,7 +23,18 @@
 			return NULL;
 		}
 		$user = $queryResult->records[0];
-		$username = $user->Username;
+		return $user->Username;
+	}
+
+	function loginUser(string $userEmail = NULL, string $password = NULL) {
+		// Validate function parameters
+		if (is_null($userEmail) || is_null($password) || strlen($userEmail) == 0 || strlen($password) == 0){
+			return "{ \"ERROR\": \"Invalid parameters passed!\" }";;
+		}
+		$username = getUsernameForEmail($userEmail);
+		if ($username == NULL) {
+			return "{ \"ERROR\": \"Could not find user!\" }";
+		}
 		// Get Oauth token for actual username & password
 		$finalConnection = new SforceEnterpriseClient();
 		$Options = array(
@@ -42,12 +54,12 @@
 	error_reporting(E_ALL);
 	
 	if (isset($_POST['username']) && $_POST['username'] && isset($_POST['password']) && $_POST['password']) {
-		echo myFunction($_POST['username'], $_POST['password']);
+		echo loginUser($_POST['username'], $_POST['password']);
 	}
 	else {
-		echo "{ 'ERROR': 'Invalid parameters passed!' }";
+		echo "{ \"ERROR\": \"Invalid parameters passed!\" }";
 	}
 	
-	echo myFunction('aacostad.everis@gmail.com', 'P4ssw0rd_3v3r1s');
+	echo loginUser('aacostad.everis@gmail.com', 'P4ssw0rd_3v3r1s');
 ?>
 
