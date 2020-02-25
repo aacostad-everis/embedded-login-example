@@ -35,9 +35,9 @@
 		$finalConnection->LoginScopeHeaderValue->portalId = '0DB5J0000004CLY';
 		
 		$finalConnection->createConnection("/app/soapclient/enterprise.wsdl.xml", $Options);
-		$finalConnection->login($username, $password);
+		$loginResult = $finalConnection->login($username, $password);
 		
-		
+		return $loginResult;
 	}
 
 	ini_set('display_errors', 1);
@@ -45,12 +45,12 @@
 	error_reporting(E_ALL);
 	
 	if (isset($_POST['username']) && $_POST['username'] && isset($_POST['password']) && $_POST['password']) {
-		myFunction($_POST['username'], $_POST['password']);
+		echo myFunction($_POST['username'], $_POST['password']);
 	}
 	else {
-		echo "ERROR Message";
+		echo "{ 'ERROR': 'Invalid parameters passed!' }";
 	}
 	
-	myFunction('aacostad.everis@gmail.com', 'P4ssw0rd_3v3r1s');
+	echo myFunction('aacostad.everis@gmail.com', 'P4ssw0rd_3v3r1s');
 ?>
 
