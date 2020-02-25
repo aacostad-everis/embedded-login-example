@@ -25,7 +25,7 @@
 		
 		echo "Usuario: {serialize($user)}";
 		
-		$username = $user->fields->username;
+		$username = $user->fieldsToNull->username;
 		
 		echo "Username: {$username} for email: {$userEmail}";
 		// Get Oauth token for actual username & password
