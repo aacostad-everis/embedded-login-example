@@ -25,6 +25,8 @@
     <meta name="salesforce-mask-redirects" content="<?php echo getenv('SALESFORCE_MASK_REDIRECTS');?>">
 	<link href="https://<?php echo getenv('SALESFORCE_COMMUNITY_URL');?>/servlet/servlet.loginwidgetcontroller?type=css" rel="stylesheet" type="text/css" />
     <script src="https://<?php echo getenv('SALESFORCE_COMMUNITY_URL');?>/servlet/servlet.loginwidgetcontroller?type=javascript_widget" async defer></script>
+	  
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
   </head>
   
   <body>
@@ -40,11 +42,39 @@
         <div class="element-right">
         </div>
   <div id="iFrameDiv" style="border-radius: 10px; width: 300px; height: 400px; overflow: hidden;">   
-    <form action="/login_page.php" method="post">
+    <form id="loginform" method="post"> <!--action="/login_page.php"-->
       Username: <input type="text" name="username"><br>
       E-Password: <input type="text" name="password"><br>
       <input type="submit" value="Submit">
-    </form> 
+    </form>
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+	    $('#loginform').submit(function(e) {
+		e.preventDefault();
+		$.ajax({
+		    type: "POST",
+		    url: 'login_page.php',
+		    data: $(this).serialize(),
+		    success: function(response)
+		    {
+			var jsonData = JSON.parse(response);
+
+			// user is logged in successfully in the back-end
+			// let's redirect
+			if (jsonData.success == "1")
+			{
+			    location.href = 'my_profile.php';
+			}
+			else
+			{
+			    alert('Invalid Credentials!');
+			}
+		   }
+	       });
+	     });
+	});
+	</script>
   </div> 
 	<div id="iFrameDiv" style="border-radius: 10px; width: 300px; height: 400px; overflow: hidden;"> 
 		<iframe id="inlineFrameExample" title="Login iFrame" style="overflow:hidden;" width="100%" height="100%" scrolling="no" src="https://<?php echo getenv('SALESFORCE_COMMUNITY_URL');?>/services/oauth2/authorize?response_type=token&client_id=<?php echo getenv('SALESFORCE_CLIENT_ID');?>&redirect_uri=https%3A%2F%2F<?php echo getenv('SALESFORCE_HEROKUAPP_URL');?>%2F_callback.php&scope=openid&nonce=somevalue"></iframe>
