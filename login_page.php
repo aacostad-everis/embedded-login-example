@@ -17,7 +17,9 @@
 		
 		$mySforceConnection->login(USERNAME, PASSWORD.SECURITY_TOKEN);
 		
-		echo "login result: $mySforceConnection->getSessionId()";
+		$SessionID = $mySforceConnection->getSessionId();
+		
+		echo "login result: $SessionID";
 	}
 
 	ini_set('display_errors', 1);
