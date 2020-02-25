@@ -22,6 +22,9 @@
 			return NULL;
 		}
 		$user = $queryResult->records[0];
+		
+		echo "Usuario: {serialize($user)}";
+		
 		$username = $user->fields->username;
 		
 		echo "Username: {$username} for email: {$userEmail}";
