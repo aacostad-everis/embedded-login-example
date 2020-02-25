@@ -1,25 +1,29 @@
 <?php
-	function myFunction() {
+	function myFunction(string $userEmail = NULL, string $password = NULL) {
+		// Validate function parameters
+		if (is_null($userEmail) || is_null($password) || strlen($userEmail) == 0 || strlen($password) == 0){
+			return NULL;
+		}
+		// Get connection credentials for integration user
 		define("USERNAME", "tgodoyr.damm@everis.com");
 		define("PASSWORD", "Tg28122019");
 		define("SECURITY_TOKEN", "edQ9hwiWyF4rtuPciKEwnAOoZ");
-		
-		echo "Before importing";
-		
+		// Connect to Salesforce instance using PHP Toolkit
 		require_once ('soapclient/SforceEnterpriseClient.php');
-		
-		echo "Before creating instance";
-		
 		$mySforceConnection = new SforceEnterpriseClient();
 		$mySforceConnection->createConnection("/app/soapclient/enterprise.wsdl.xml");
-	
-		echo "Before login";
-		
 		$mySforceConnection->login(USERNAME, PASSWORD.SECURITY_TOKEN);
+		// Query Salesforce to get Username from email
+		$queryResult = $mySforceConnection->query("SELECT username FROM USER where email = '{$userEmail}'");
 		
-		$SessionID = $mySforceConnection->getSessionId();
+		if ($queryResult->count() != 1) {
+			return NULL;
+		}
 		
-		echo "login result: $SessionID";
+		$username = $queryResult[0]->fields->username;
+		// Get Oauth token for actual username & password
+		
+		
 	}
 
 	ini_set('display_errors', 1);
@@ -27,9 +31,12 @@
 	error_reporting(E_ALL);
 	
 	if (isset($_POST['username']) && $_POST['username'] && isset($_POST['password']) && $_POST['password']) {
-		
+		myFunction($_POST['username'], $_POST['password']);
+	}
+	else {
+		echo "ERROR Message";
 	}
 	
-	myFunction();
+	myFunction('Username', 'p4ssw0rd');
 ?>
 
