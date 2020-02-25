@@ -34,7 +34,7 @@
 		$finalConnection->setLoginScopeHeader(new LoginScopeHeader($OrgId, $SiteId));		
 		$loginResult = $finalConnection->login($username, $password);
 		
-		return $loginResult;
+		return json_encode($loginResult);
 	}
 
 	ini_set('display_errors', 1);
