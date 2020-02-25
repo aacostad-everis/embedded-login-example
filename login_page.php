@@ -15,9 +15,9 @@
 	
 		echo "Before login";
 		
-		$loginResult = $mySforceConnection->login(USERNAME, PASSWORD.SECURITY_TOKEN);
+		$mySforceConnection->login(USERNAME, PASSWORD.SECURITY_TOKEN);
 		
-		echo "login result: $loginResult";
+		echo "login result: $mySforceConnection->getSessionId()";
 	}
 
 	ini_set('display_errors', 1);
