@@ -14,7 +14,9 @@
 		$mySforceConnection->createConnection("/app/soapclient/enterprise.wsdl.xml");
 		$mySforceConnection->login(USERNAME, PASSWORD.SECURITY_TOKEN);
 		// Query Salesforce to get Username from email
-		$queryResult = $mySforceConnection->query("SELECT username FROM USER where email = '{$userEmail}'");
+		$query = "SELECT username FROM USER where email = '{$userEmail}'";
+		echo "query: {$query}";
+		$queryResult = $mySforceConnection->query($query);
 		
 		if ($queryResult->records != NULL || count($queryResult->records) != 1) {
 			return NULL;
