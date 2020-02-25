@@ -11,7 +11,7 @@
 		echo "Before creating instance";
 		
 		$mySforceConnection = new SforceEnterpriseClient();
-		$mySforceConnection->createConnection("enterprise.wsdl.xml");
+		$mySforceConnection->createConnection("/soapclient/enterprise.wsdl.xml");
 	
 		echo "Before login";
 		
