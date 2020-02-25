@@ -15,17 +15,15 @@
 		$mySforceConnection->login(USERNAME, PASSWORD.SECURITY_TOKEN);
 		// Query Salesforce to get Username from email
 		$query = "SELECT username FROM USER where email = '{$userEmail}' AND isActive = true";
-		echo "query: {$query}";
 		$queryResult = $mySforceConnection->query($query);
-		
+		// Close connection for integrated user
+		$mySforceConnection->logout();
+		// Get username from result
 		if ($queryResult->records == NULL || count($queryResult->records) != 1) {
 			return NULL;
 		}
 		$user = $queryResult->records[0];
-		
 		$username = $user->Username;
-		
-		echo "Username: {$username} for email: {$userEmail}";
 		// Get Oauth token for actual username & password
 		
 		
