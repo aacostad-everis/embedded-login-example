@@ -21,6 +21,8 @@
 		}
 		
 		$username = $queryResult->records[0]->fields->username;
+		
+		echo "Username: {$username} for email: {$userEmail}";
 		// Get Oauth token for actual username & password
 		
 		
