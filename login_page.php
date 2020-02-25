@@ -16,7 +16,7 @@
 		// Query Salesforce to get Username from email
 		$queryResult = $mySforceConnection->query("SELECT username FROM USER where email = '{$userEmail}'");
 		
-		if ($queryResult->records != NULL && $queryResult->records->count() != 1) {
+		if ($queryResult->records != NULL || $queryResult->records->count() != 1) {
 			return NULL;
 		}
 		
