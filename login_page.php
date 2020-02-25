@@ -1,6 +1,6 @@
 <?php
 
-	protected function getUsernameForEmail(string $userEmail = NULL) {
+	function getUsernameForEmail(string $userEmail = NULL) {
 		// Validate function parameters
 		if (is_null($userEmail) || strlen($userEmail) == 0){
 			return NULL;
