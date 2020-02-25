@@ -16,12 +16,15 @@
 			define("SECURITY_TOKEN", "edQ9hwiWyF4rtuPciKEwnAOoZ");
 
 			require_once ('soapclient/SforceEnterpriseClient.php');
-			echo $_POST["username"];
+			
+			$mySforceConnection = new SforceEnterpriseClient();
+			$mySforceConnection->createConnection("enterprise.wsdl.xml");
+			$mySforceConnection->login(USERNAME, PASSWORD.SECURITY_TOKEN);
+			
+			echo $mySforceConnection->sessionId;
 		}
-		myFunction();
 	?>
 
 <button onclick="myFunction()">Get login info</button>
-Welcome2 <?php echo $_POST["username"]; ?><br>
 </body>    
 </html>
