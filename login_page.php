@@ -5,14 +5,13 @@
 			return NULL;
 		}
 		// Get connection credentials for integration user
-		define("USERNAME", "tgodoyr.damm@everis.com");
-		define("PASSWORD", "Tg28122019");
-		define("SECURITY_TOKEN", "edQ9hwiWyF4rtuPciKEwnAOoZ");
+		define("USERNAME", getenv('SALESFORCE_INTEGRATION_USERNAME'));
+		define("PASSWORD", getenv('SALESFORCE_INTEGRATION_PASSWORD'));
 		// Connect to Salesforce instance using PHP Toolkit
 		require_once ('soapclient/SforceEnterpriseClient.php');
 		$mySforceConnection = new SforceEnterpriseClient();
 		$mySforceConnection->createConnection("/app/soapclient/enterprise.wsdl.xml");
-		$mySforceConnection->login(USERNAME, PASSWORD.SECURITY_TOKEN);
+		$mySforceConnection->login(USERNAME, PASSWORD);
 		// Query Salesforce to get Username from email
 		$query = "SELECT username FROM USER where email = '{$userEmail}' AND isActive = true";
 		$queryResult = $mySforceConnection->query($query);
