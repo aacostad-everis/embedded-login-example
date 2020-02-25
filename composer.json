@@ -1,6 +1,7 @@
 {
     "require": { 
         "ext-soap": "*",
+        "socialconnect/auth": "^3.0",
         "php": "^7.2"
     }
 }
