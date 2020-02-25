@@ -27,26 +27,30 @@
 	}
 
 	function loginUser(string $userEmail = NULL, string $password = NULL) {
-		// Validate function parameters
-		if (is_null($userEmail) || is_null($password) || strlen($userEmail) == 0 || strlen($password) == 0){
-			return "{ \"ERROR\": \"Invalid parameters passed!\" }";;
+		try {
+			// Validate function parameters
+			if (is_null($userEmail) || is_null($password) || strlen($userEmail) == 0 || strlen($password) == 0){
+				return "{ \"ERROR\": \"Invalid parameters passed!\" }";
+			}
+			$username = getUsernameForEmail($userEmail);
+			if ($username == NULL) {
+				return "{ \"ERROR\": \"Could not find user!\" }";
+			}
+			// Get Oauth token for actual username & password
+			$finalConnection = new SforceEnterpriseClient();
+			$Options = array(
+				'location'=> getenv('SALESFORCE_COMMUNITY_URL') . '/Soap/c/48.0/'
+			);
+			$finalConnection->createConnection("/app/soapclient/enterprise.wsdl.xml", $Options);
+			$OrgId='00D5J000000nKmp';
+			$SiteId=''; //'0DB5J0000004CLY';
+			$finalConnection->setLoginScopeHeader(new LoginScopeHeader($OrgId, $SiteId));		
+			$loginResult = $finalConnection->login($username, $password);
+			return json_encode($loginResult);
 		}
-		$username = getUsernameForEmail($userEmail);
-		if ($username == NULL) {
-			return "{ \"ERROR\": \"Could not find user!\" }";
+		catch (Exception $e) {
+			return "{ \"ERROR\": "{$e->getMessage()}" }";
 		}
-		// Get Oauth token for actual username & password
-		$finalConnection = new SforceEnterpriseClient();
-		$Options = array(
-			'location'=> getenv('SALESFORCE_COMMUNITY_URL') . '/Soap/c/48.0/'
-		);
-		$finalConnection->createConnection("/app/soapclient/enterprise.wsdl.xml", $Options);
-		$OrgId='00D5J000000nKmp';
-		$SiteId=''; //'0DB5J0000004CLY';
-		$finalConnection->setLoginScopeHeader(new LoginScopeHeader($OrgId, $SiteId));		
-		$loginResult = $finalConnection->login($username, $password);
-		
-		return json_encode($loginResult);
 	}
 
 	ini_set('display_errors', 1);
