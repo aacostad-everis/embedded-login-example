@@ -14,7 +14,7 @@
 		$mySforceConnection->createConnection("/app/soapclient/enterprise.wsdl.xml");
 		$mySforceConnection->login($IntegrationUsername, $IntegrationPassword);
 		// Query Salesforce to get Username from email
-		$query = "SELECT username FROM USER where email = '{$userEmail}' AND isActive = true";
+		$query = "SELECT username FROM USER where email = '{$userEmail}' AND isActive = true AND IsPortalEnabled = true";
 		$queryResult = $mySforceConnection->query($query);
 		// Close connection for integrated user
 		$mySforceConnection->logout();
