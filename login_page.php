@@ -5,14 +5,14 @@
 		public $resultData;
 		
 		function loginResult(bool $logged, &$result) {
-			$loggedIn = $logged;
-			$resultData = $result;
+			$this->loggedIn = $logged;
+			$this->resultData = $result;
 		}
 		
 		public function jsonSerialize() {
 			return array(
-				"loggedIn" => $loggedIn,
-				"resultData" => $resultData
+				"loggedIn" => $this->loggedIn,
+				"resultData" => $this->resultData
 			);
 		}
 	}
