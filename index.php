@@ -41,14 +41,14 @@
         </div>
         <div class="element-right">
         </div>
-  <div id="loginFormDiv" style="border-radius: 10px; width: 300px; height: 400px; overflow: hidden;">   
+  <div id="loginFormDiv" style="border-radius: 10px; width: 300px; height: 400px; overflow: hidden; background-color: white; color: black; margin-right: 5px;">   
     <form id="loginform" method="post"> <!--action="/login_page.php"-->
       Username: <input type="text" name="username"><br>
       Password: <input type="password" name="password"><br>
       <input type="submit" value="Submit">
     </form>
   </div> 
-  <div id="userProfile" style="border-radius: 10px; width: 300px; height: 400px; overflow: hidden; display: none;">
+  <div id="userProfile" style="border-radius: 10px; width: 300px; height: 400px; overflow: hidden; display: none; background-color: white; color: black; margin-right: 5px;">
 	  Bienvenido <output id="username" name="username"></output>
 	  <br>
 	  Acceda a su área personal <a id="profileLink" href="">aqui</a>.
