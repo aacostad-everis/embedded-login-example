@@ -64,7 +64,7 @@
 			console.log("Data: " + response);
 			// user is logged in successfully in the back-end
 			// let's redirect
-			if (jsonData.success == "1")
+			if (jsonData.loggedIn == "1")
 			{
 			    alert('Logged In!');
 			}
