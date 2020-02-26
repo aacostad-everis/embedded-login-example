@@ -1,10 +1,10 @@
 <?php
 	
 	class loginResult {
-		public boolean $loggedIn;
+		public bool $loggedIn;
 		public $resultData;
 		
-		function loginResult(boolean $logged, $result) {
+		function loginResult(bool $logged, $result) {
 			$loggedIn = $logged;
 			$resultData = $result;
 		}
