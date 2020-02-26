@@ -49,7 +49,7 @@
     </form>
   </div> 
   <div id="userProfile" style="border-radius: 10px; width: 300px; height: 400px; overflow: hidden; display: none; background-color: white; color: black; margin-right: 5px;">
-	  Bienvenido <output id="username" name="username"></output>
+	  Bienvenido <output id="username" name="username" style="font-weight:bold;"></output>
 	  <br>
 	  Acceda a su área personal <a id="profileLink" href="">aqui</a>.
   </div>
