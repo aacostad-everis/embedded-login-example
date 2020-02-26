@@ -44,7 +44,7 @@
   <div id="loginFormDiv" style="border-radius: 10px; width: 300px; height: 400px; overflow: hidden;">   
     <form id="loginform" method="post"> <!--action="/login_page.php"-->
       Username: <input type="text" name="username"><br>
-      E-Password: <input type="text" name="password"><br>
+      Password: <input type="password" name="password"><br>
       <input type="submit" value="Submit">
     </form>
   </div> 
@@ -61,7 +61,7 @@
 		    {
 			var jsonData = JSON.parse(response);
 			    
-			console.log("Data: " + jsonData);
+			console.log("Data: " + response);
 			// user is logged in successfully in the back-end
 			// let's redirect
 			if (jsonData.success == "1")
