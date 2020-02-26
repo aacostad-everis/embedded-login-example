@@ -8,13 +8,6 @@
 			$this->loggedIn = $logged;
 			$this->resultData = $result;
 		}
-		
-		/*public function jsonSerialize() {
-			return array(
-				"loggedIn" => $this->loggedIn,
-				"resultData" => $this->resultData
-			);
-		}*/
 	}
 
 	function getUsernameForEmail(string $userEmail = NULL) {
