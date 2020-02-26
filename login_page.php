@@ -37,7 +37,7 @@
 	}
 
 	function loginUser(string $userEmail = NULL, string $password = NULL) {
-		$loginResult = new loginResult(false, "User not logged in.");
+		$loginResult = new loginResult(False, "User not logged in.");
 		try {
 			// Validate function parameters
 			if (is_null($userEmail) || is_null($password) || strlen($userEmail) == 0 || strlen($password) == 0){
@@ -60,7 +60,7 @@
 			$finalConnection->setLoginScopeHeader(new LoginScopeHeader($OrgId, $SiteId));		
 			$calloutResult = $finalConnection->login($username, $password);
 			
-			$loginResult->loggedIn = true;
+			$loginResult->loggedIn = True;
 			$loginResult->resultData = $calloutResult;
 			
 			return json_encode($loginResult);
@@ -75,7 +75,7 @@
 		echo loginUser($_POST['username'], $_POST['password']);
 	}
 	else {
-		echo json_encode(new loginResult(false, "Incorrect parameters provided."));
+		echo json_encode(new loginResult(False, "Incorrect parameters provided."));
 	}
 ?>
 
