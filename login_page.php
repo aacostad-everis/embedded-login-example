@@ -4,7 +4,7 @@
 		public bool $loggedIn;
 		public $resultData;
 		
-		function loginResult(bool $logged, $result) {
+		function loginResult(bool $logged, &$result) {
 			$loggedIn = $logged;
 			$resultData = $result;
 		}
