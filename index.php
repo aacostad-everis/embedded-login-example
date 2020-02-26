@@ -48,6 +48,11 @@
       <input type="submit" value="Submit">
     </form>
   </div> 
+  <div id="userProfile" style="border-radius: 10px; width: 300px; height: 400px; overflow: hidden; display: none;">
+	  Bienvenido <output id="username" name="username"></output>
+	  <br>
+	  Acceda a su área personal <a id="profileLink" href="">aqui</a>.
+  </div>
 
 	<script type="text/javascript">
 	$(document).ready(function() {
@@ -66,16 +71,28 @@
 			// let's redirect
 			if (jsonData.loggedIn == "1")
 			{
-			    alert('Logged In!');
+			    showUserProfile(jsonData.resultData);
 			}
 			else
 			{
-			    alert('Invalid Credentials!');
+			    alert('Invalid Credentials!\nMessage:' + jsonData.resultData);
 			}
 		   }
 	       });
 	     });
 	});
+		
+	function showUserProfile(loginData) {
+		loginFormDiv = document.getElementById('loginFormDiv');
+		userProfileDiv = document.getElementById('userProfile');
+		
+		loginFormDiv.style.display = "none";
+		userProfileDiv.style.display = "block";
+		
+		usernameOutput = document.getElementById('username');
+		usernameOutput.value = loginData.userInfo.userFullName;
+		
+	}
 	</script>
 	<div id="iFrameDiv" style="border-radius: 10px; width: 300px; height: 400px; overflow: hidden;"> 
 		<iframe id="inlineFrameExample" title="Login iFrame" style="overflow:hidden;" width="100%" height="100%" scrolling="no" src="https://<?php echo getenv('SALESFORCE_COMMUNITY_URL');?>/services/oauth2/authorize?response_type=token&client_id=<?php echo getenv('SALESFORCE_CLIENT_ID');?>&redirect_uri=https%3A%2F%2F<?php echo getenv('SALESFORCE_HEROKUAPP_URL');?>%2F_callback.php&scope=openid&nonce=somevalue"></iframe>
