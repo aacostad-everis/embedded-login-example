@@ -92,6 +92,9 @@
 		usernameOutput = document.getElementById('username');
 		usernameOutput.value = loginData.userInfo.userFullName;
 		
+		profileURL = 'https://damm-identiy-everis-developer-edition.eu32.force.com/damm/secur/frontdoor.jsp?sid=' + encodeURI(loginData.sessionId) + '&retURL=' + encodeURI('https://damm-identiy-everis-developer-edition.eu32.force.com/damm/s/profile/' + loginData.userId);
+		profileLink = document.getElementById('profileLink');
+		profileLink.setAttribute('href', profileURL);
 	}
 	</script>
 	<div id="iFrameDiv" style="border-radius: 10px; width: 300px; height: 400px; overflow: hidden;"> 
