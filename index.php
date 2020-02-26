@@ -55,6 +55,8 @@
 	  
 	  <form id="profilePageForm" method="POST" action="https://damm-identitt-everis-dev-ed.lightning.force.com/secur/frontdoor.jsp">
 		<input id="sessionID" type="hidden" name="sid" value="full_sessionID_value" />
+		<input id="SfdcOrg" type="hidden" name="orgId" value="00D5J000000nKmp" />
+		<input id="Portal" type="hidden" name="portalId" value="0DB5J0000004CLY" />
 		<input id="profileURL" type="hidden" name="retURL" value="optional_relative_url_to_open" /> 
 		<input type="submit" name="login" value="Log In" />
 	  </form>
