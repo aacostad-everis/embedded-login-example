@@ -8,6 +8,10 @@
 			$loggedIn = $logged;
 			$resultData = $result;
 		}
+		
+		public function jsonSerialize() {
+			return get_object_vars($this);
+		}
 	}
 
 	function getUsernameForEmail(string $userEmail = NULL) {
