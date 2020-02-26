@@ -53,7 +53,7 @@
 	  <br>
 	  Acceda a su área personal <a id="profileLink" onClick="gotoProfilePage(); return false;">aqui</a>.
 	  
-	  <form id="profilePageForm" method="POST" action="https://damm-identiy-everis-developer-edition.eu32.force.com/secur/frontdoor.jsp">
+	  <form id="profilePageForm" method="POST" action="https://damm-identiy-everis-developer-edition.eu32.force.com/damm/secur/frontdoor.jsp">
 		<input id="sessionID" type="hidden" name="sid" value="full_sessionID_value" />
 		<input id="profileURL" type="hidden" name="retURL" value="optional_relative_url_to_open" /> 
 		<input type="submit" name="login" value="Log In" />
