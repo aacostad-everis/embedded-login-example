@@ -10,7 +10,10 @@
 		}
 		
 		public function jsonSerialize() {
-			return get_object_vars($this);
+			return array(
+				"loggedIn" => $loggedIn,
+				"resultData" => $resultData
+			);
 		}
 	}
 
