@@ -4,7 +4,7 @@
 		public bool $loggedIn;
 		public $resultData;
 		
-		function loginResult(bool $logged, &$result) {
+		function __construct(bool $logged, $result) {
 			$this->loggedIn = $logged;
 			$this->resultData = $result;
 		}
