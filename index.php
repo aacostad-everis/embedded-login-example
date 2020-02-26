@@ -51,7 +51,13 @@
   <div id="userProfile" style="border-radius: 10px; width: 300px; height: 400px; overflow: hidden; display: none; background-color: white; color: black; margin-right: 5px;">
 	  Bienvenido <output id="username" name="username" style="font-weight:bold;"></output>
 	  <br>
-	  Acceda a su área personal <a id="profileLink" href="">aqui</a>.
+	  Acceda a su área personal <a id="profileLink" onClick="gotoProfilePage(); return false;">aqui</a>.
+	  
+	  <form id="profilePageForm" method="POST" action="https://damm-identiy-everis-developer-edition.eu32.force.com/secur/frontdoor.jsp">
+		<input id="sessionID" type="hidden" name="sid" value="full_sessionID_value" />
+		<input id="profileURL" type="hidden" name="retURL" value="optional_relative_url_to_open" /> 
+		<input type="submit" name="login" value="Log In" />
+	  </form>
   </div>
 
 	<script type="text/javascript">
@@ -93,8 +99,16 @@
 		usernameOutput.value = loginData.userInfo.userFullName;
 		
 		profileURL = 'https://damm-identiy-everis-developer-edition.eu32.force.com/damm/secur/frontdoor.jsp?sid=' + encodeURI(loginData.sessionId) + '&retURL=' + encodeURI('https://damm-identiy-everis-developer-edition.eu32.force.com/damm/s/profile/' + loginData.userId);
-		profileLink = document.getElementById('profileLink');
-		profileLink.setAttribute('href', profileURL);
+		sessionID = document.getElementById('sessionID');
+		sessionID.value = loginData.sessionId;
+		
+		profileURL = document.getElementById('profileURL');
+		profileURL.value = '/damm/s/profile/' + loginData.userId;
+	}
+		
+	function gotoProfilePage() {
+		profileForm = document.getElementById('profilePageForm');
+		profileForm.submit();
 	}
 	</script>
 	<div id="iFrameDiv" style="border-radius: 10px; width: 300px; height: 400px; overflow: hidden;"> 
