@@ -1,4 +1,14 @@
 <?php
+	
+	class loginResult {
+		public boolean $loggedIn;
+		public $resultData;
+		
+		function loginResult(boolean $logged, $result) {
+			$loggedIn = $logged;
+			$resultData = $result;
+		}
+	}
 
 	function getUsernameForEmail(string $userEmail = NULL) {
 		// Validate function parameters
@@ -27,14 +37,17 @@
 	}
 
 	function loginUser(string $userEmail = NULL, string $password = NULL) {
+		$loginResult = new loginResult(false, "User not logged in.");
 		try {
 			// Validate function parameters
 			if (is_null($userEmail) || is_null($password) || strlen($userEmail) == 0 || strlen($password) == 0){
-				return "{ \"ERROR\": \"Invalid parameters passed!\" }";
+				$loginResult->resultData = "Invalid parameters passed.";
+				return json_encode($loginResult);
 			}
 			$username = getUsernameForEmail($userEmail);
 			if ($username == NULL) {
-				return "{ \"ERROR\": \"Could not find user!\" }";
+				$loginResult->resultData = "Could not find user.";
+				return json_encode($loginResult);
 			}
 			// Get Oauth token for actual username & password
 			$finalConnection = new SforceEnterpriseClient();
@@ -45,11 +58,16 @@
 			$OrgId='00D5J000000nKmp';
 			$SiteId=''; //'0DB5J0000004CLY';
 			$finalConnection->setLoginScopeHeader(new LoginScopeHeader($OrgId, $SiteId));		
-			$loginResult = $finalConnection->login($username, $password);
+			$calloutResult = $finalConnection->login($username, $password);
+			
+			$loginResult->loggedIn = true;
+			$loginResult->resultData = $calloutResult;
+			
 			return json_encode($loginResult);
 		}
 		catch (Exception $e) {
-			return "{ \"ERROR\": \"{$e->getMessage()}\" }";
+			$loginResult->resultData = $e->getMessage();
+			return json_encode($loginResult);
 		}
 	}
 
@@ -57,7 +75,7 @@
 		echo loginUser($_POST['username'], $_POST['password']);
 	}
 	else {
-		echo "{ \"ERROR\": \"Invalid parameters passed!\" }";
+		echo json_encode(new loginResult(false, "Incorrect parameters provided."));
 	}
 ?>
 
